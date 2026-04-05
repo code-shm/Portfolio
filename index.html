@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>S. MISHRA // ARCHITECT</title>
+  <meta name="description" content="Shashank Mishra — ML Engineer, Research Intern, Computer Vision & Deep Learning specialist. Portfolio of projects, research publications, and experience."/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;700&family=DM+Sans:wght@400;500;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-high": "#1f1f26",
+            "on-primary-container": "#00575b",
+            "surface-dim": "#0e0e13",
+            "on-primary-fixed": "#004346",
+            "primary-fixed-dim": "#00e5ee",
+            "primary-container": "#00f4fe",
+            "background": "#0e0e13",
+            "on-secondary": "#0b5800",
+            "surface-container": "#19191f",
+            "on-primary-fixed-variant": "#006266",
+            "surface-container-lowest": "#000000",
+            "on-error-container": "#ffa8a3",
+            "secondary-container": "#106e00",
+            "tertiary-container": "#edeaf1",
+            "on-error": "#490006",
+            "secondary-fixed": "#2ff801",
+            "inverse-on-surface": "#55545b",
+            "tertiary-dim": "#eae7ee",
+            "on-secondary-fixed-variant": "#0d6200",
+            "on-tertiary-fixed-variant": "#68676e",
+            "surface-variant": "#25252d",
+            "tertiary-fixed-dim": "#eae7ee",
+            "error-dim": "#d7383b",
+            "secondary": "#2ff801",
+            "outline": "#76747b",
+            "on-primary": "#006165",
+            "primary": "#a1faff",
+            "surface-container-low": "#131319",
+            "surface": "#0e0e13",
+            "surface-container-highest": "#25252d",
+            "error": "#ff716c",
+            "on-tertiary-fixed": "#4b4a51",
+            "secondary-dim": "#2be800",
+            "on-secondary-fixed": "#064200",
+            "inverse-primary": "#006a6e",
+            "on-surface": "#f9f5fd",
+            "primary-fixed": "#00f4fe",
+            "primary-dim": "#00e5ee",
+            "on-tertiary": "#5f5e65",
+            "tertiary-fixed": "#f9f5fd",
+            "tertiary": "#fcf8ff",
+            "surface-bright": "#2c2b33",
+            "on-surface-variant": "#acaab1",
+            "on-tertiary-container": "#57565c",
+            "outline-variant": "#48474d",
+            "secondary-fixed-dim": "#2be800",
+            "on-background": "#f9f5fd",
+            "error-container": "#9f0519",
+            "surface-tint": "#a1faff",
+            "inverse-surface": "#fcf8ff",
+            "on-secondary-container": "#e7ffd9"
+          },
+          "borderRadius": {
+            "DEFAULT": "0px",
+            "lg": "0px",
+            "xl": "0px",
+            "full": "0px"
+          },
+          "fontFamily": {
+            "headline": ["Bebas Neue"],
+            "body": ["DM Sans"],
+            "label": ["JetBrains Mono"]
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0e0e13;
+      cursor: crosshair;
+    }
+    .grain-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.04;
+    }
+    .scanlines {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: repeating-linear-gradient(rgba(0,0,0,0) 0px, rgba(0,0,0,0) 1px, rgba(161,250,255,0.02) 2px, rgba(161,250,255,0.02) 3px);
+      pointer-events: none;
+      z-index: 10;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .glow-cyan { text-shadow: 0 0 10px rgba(161,250,255,0.5); }
+    .glow-green { text-shadow: 0 0 10px rgba(47,248,1,0.5); }
+    .border-glow-cyan { box-shadow: inset 0 0 10px rgba(161,250,255,0.1), 0 0 5px rgba(161,250,255,0.1); }
+    .typewriter {
+      overflow: hidden;
+      white-space: nowrap;
+      margin: 0 auto;
+      border-right: 2px solid #a1faff;
+      animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+    }
+    @keyframes typing { from { width: 0 } to { width: 100% } }
+    @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: #a1faff; } }
+
+    /* Smooth scroll */
+    html { scroll-behavior: smooth; }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #0e0e13; }
+    ::-webkit-scrollbar-thumb { background: #a1faff33; }
+    ::-webkit-scrollbar-thumb:hover { background: #a1faff66; }
+  </style>
+</head>
+<body class="font-body text-on-surface overflow-x-hidden selection:bg-primary selection:text-on-primary">
+
+  <div class="grain-overlay"></div>
+
+  <!-- Navigation Shell -->
+  <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 md:px-12 bg-[#0e0e13]/40 backdrop-blur-xl border-b border-[#a1faff]/10 shadow-[0_1px_0_0_rgba(161,250,255,0.1)]">
+    <div class="text-xl font-bold tracking-widest text-[#a1faff] font-['Bebas_Neue']">
+      S. MISHRA
+    </div>
+    <div class="hidden md:flex items-center gap-8 font-['Bebas_Neue'] tracking-[0.05em] uppercase text-sm md:text-base">
+      <a class="text-[#fcf8ff]/60 hover:text-[#a1faff] transition-colors duration-300" href="#about">About</a>
+      <a class="text-[#fcf8ff]/60 hover:text-[#a1faff] transition-colors duration-300" href="#experience">Experience</a>
+      <a class="text-[#fcf8ff]/60 hover:text-[#a1faff] transition-colors duration-300" href="#projects">Projects</a>
+      <a class="text-[#fcf8ff]/60 hover:text-[#a1faff] transition-colors duration-300" href="#research">Research</a>
+      <a class="text-[#fcf8ff]/60 hover:text-[#a1faff] transition-colors duration-300" href="#contact">Contact</a>
+    </div>
+    <div class="flex items-center gap-4 text-[#a1faff]">
+      <span class="material-symbols-outlined cursor-pointer hover:bg-[#a1faff]/5 transition-all duration-200 p-2">terminal</span>
+      <span class="material-symbols-outlined cursor-pointer hover:bg-[#a1faff]/5 transition-all duration-200 p-2">sensors</span>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="relative h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+    <div class="scanlines"></div>
+    <div class="absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(161,250,255,0.05)_0%,_rgba(14,14,19,1)_70%)]"></div>
+    <div class="relative z-20">
+      <div class="font-label text-secondary mb-4 tracking-tighter uppercase text-xs md:text-sm">
+        [ SIGNAL STABILITY: 100% // INITIALIZING UI ]
+      </div>
+      <h1 class="font-headline text-6xl md:text-9xl text-primary tracking-tighter mb-4 glow-cyan leading-none">
+        SHASHANK MISHRA
+      </h1>
+      <div class="inline-block">
+        <p class="font-label text-secondary text-sm md:text-xl typewriter max-w-fit mx-auto mb-10">
+          ML Engineer | Research Intern | Computer Vision | Deep Learning</p>
+      </div>
+      <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-12">
+        <a class="group relative px-8 py-3 bg-transparent border border-primary text-primary font-headline tracking-widest text-lg hover:bg-primary hover:text-on-primary transition-all duration-300 overflow-hidden" href="#projects">
+          <span class="relative z-10">VIEW MY WORK</span>
+          <div class="absolute inset-0 bg-primary/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+        </a>
+        <a class="px-8 py-3 bg-secondary text-on-secondary font-headline tracking-widest text-lg hover:bg-on-secondary hover:text-secondary transition-all duration-300 shadow-[0_0_20px_rgba(47,248,1,0.3)]" href="https://drive.google.com/file/d/116mWPjM4M524sp2ETexH7xgRHQG1fUFx/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+          DOWNLOAD RESUME
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-8 text-[#fcf8ff]/40">
+        <a class="hover:text-primary transition-colors" href="mailto:contact@smishra.ai"><span class="material-symbols-outlined">alternate_email</span></a>
+        <a class="hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">code</span></a>
+        <a class="hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">science</span></a>
+        <a class="hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">hub</span></a>
+      </div>
+    </div>
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-primary/30">
+      <span class="material-symbols-outlined text-4xl">keyboard_double_arrow_down</span>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section class="py-24 px-6 md:px-24 bg-surface-container-low border-t border-[#a1faff]/5" id="about">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <div class="space-y-8">
+        <div class="inline-block py-1 px-3 bg-primary/10 text-primary font-label text-xs uppercase border-l-2 border-primary">
+          BIOMETRIC_PROFILE_01
+        </div>
+        <h2 class="font-headline text-5xl text-on-surface tracking-tight uppercase">Applying Machine Learning to Real-World Problems</h2>
+        <p class="text-on-surface-variant text-lg leading-relaxed max-w-xl">
+          I'm a pre final year B.Tech student at IIIT Naya Raipur with a strong academic background and a deep interest in Machine Learning and Computer Vision. I enjoy building practical systems that apply AI to real-world problems, from image processing to intelligent prediction models.
+        </p>
+        <p class="text-on-surface-variant text-lg leading-relaxed max-w-xl">
+          My work mainly focuses on developing and optimizing ML models, working with deep learning architectures, and exploring how theory translates into scalable solutions. I'm particularly interested in computer vision, signal-based learning, and applied AI systems.
+        </p>
+      </div>
+      <div class="bg-surface-container-highest p-8 border-l-4 border-secondary shadow-[10px_10px_0_0_rgba(47,248,1,0.05)] font-label">
+        <div class="text-secondary text-xs mb-6 flex justify-between items-center">
+          <span>SYSTEM_STATUS: ANALYZING_RECORDS</span>
+          <span class="animate-pulse">● LIVE</span>
+        </div>
+        <ul class="space-y-4 text-sm md:text-base">
+          <li class="flex items-start gap-3">
+            <span class="text-secondary opacity-50">&gt;</span>
+            <span class="text-on-surface"><span class="text-primary">CGPA:</span> 9.43 / 10.0</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-secondary opacity-50">&gt;</span>
+            <span class="text-on-surface"><span class="text-primary">PAPERS:</span> 3 Published</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-secondary opacity-50">&gt;</span>
+            <span class="text-on-surface"><span class="text-primary">PATENT:</span> 1 Intellectual Property Filed</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-secondary opacity-50">&gt;</span>
+            <span class="text-on-surface"><span class="text-primary">INTERNSHIPS:</span> 4 Strategic Engagements</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-secondary opacity-50">&gt;</span>
+            <span class="text-on-surface"><span class="text-primary">HACKATHONS:</span> 3x Grand Prize Winner</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-secondary opacity-50">&gt;</span>
+            <span class="text-on-surface"><span class="text-primary">SPARK RANK:</span> Global Top 2% (Fellow)</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Timeline -->
+  <section class="py-24 px-6 md:px-24 bg-surface overflow-hidden" id="experience">
+    <div class="text-center mb-20">
+      <h2 class="font-headline text-5xl text-primary tracking-widest uppercase mb-4">CAREER_LOGS</h2>
+      <div class="w-24 h-1 bg-secondary mx-auto"></div>
+    </div>
+    <div class="relative max-w-4xl mx-auto">
+      <div class="absolute left-1/2 top-0 bottom-0 w-px bg-outline-variant/30 hidden md:block"></div>
+
+      <!-- Experience Item 1 -->
+      <div class="relative mb-20 md:flex items-center justify-between">
+        <div class="md:w-[45%] bg-surface-container p-6 border-b border-[#a1faff]/20 hover:bg-surface-container-high transition-all group">
+          <div class="text-xs font-label text-primary mb-2">Jan 2026 - Present</div>
+          <h3 class="font-headline text-2xl text-on-surface group-hover:text-primary transition-colors">FILTERPIXEL</h3>
+          <p class="font-label text-xs text-secondary-dim mb-4">ML ENGINEER INTERN</p>
+          <p class="text-sm text-on-surface-variant leading-relaxed mb-4">
+            Built and deployed a scalable Face Search API using InsightFace embeddings and Qdrant, with a serverless AWS (Lambda + S3) architecture for efficient large-scale image retrieval.<br/>
+            Developed deep learning models for blink detection in an automated image culling pipeline, improving photo selection accuracy and reducing manual effort.<br/>
+            Currently working on AI-driven image editing models to enhance automated visual content processing and optimization.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-surface-container-highest text-[10px] font-label text-on-surface-variant">InsightFace</span>
+            <span class="px-2 py-1 bg-surface-container-highest text-[10px] font-label text-on-surface-variant">Qdrant</span>
+            <span class="px-2 py-1 bg-surface-container-highest text-[10px] font-label text-on-surface-variant">AWS</span>
+          </div>
+        </div>
+        <div class="hidden md:block absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-surface border-2 border-[#a1faff] z-10 shadow-[0_0_10px_rgba(161,250,255,0.5)]"></div>
+        <div class="md:w-[45%]"></div>
+      </div>
+
+      <!-- Experience Item 2 -->
+      <div class="relative mb-20 md:flex flex-row-reverse items-center justify-between">
+        <div class="md:w-[45%] bg-surface-container p-6 border-b border-[#2ff801]/20 hover:bg-surface-container-high transition-all group">
+          <div class="text-xs font-label text-secondary mb-2">Sept 2025 - Mar 2026</div>
+          <h3 class="font-headline text-2xl text-on-surface group-hover:text-secondary transition-colors">SAMSUNG PRISM</h3>
+          <p class="font-label text-xs text-primary-dim mb-4">Project Intern</p>
+          <p class="text-sm text-on-surface-variant leading-relaxed mb-4">
+            Developed a comparative image quality optimization system using <strong>GAN-based enhancement models</strong> and multi-metric assessment (sharpness, contrast, noise, color) for targeted improvements.<br/>
+            Focused on ML-driven approaches to learn adaptive enhancement strategies, improving PSNR and overall perceptual quality across image pairs.<br/>
+            Built a scalable pipeline with a REST API and user-controlled interface for real-time, automated image quality analysis and enhancement.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-surface-container-highest text-[10px] font-label text-on-surface-variant">CNN</span>
+            <span class="px-2 py-1 bg-surface-container-highest text-[10px] font-label text-on-surface-variant">PyTorch</span>
+            <span class="px-2 py-1 bg-surface-container-highest text-[10px] font-label text-on-surface-variant">Image Processing</span>
+          </div>
+        </div>
+        <div class="hidden md:block absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-surface border-2 border-secondary z-10 shadow-[0_0_10px_rgba(47,248,1,0.5)]"></div>
+        <div class="md:w-[45%]"></div>
+      </div>
+
+      <!-- Experience Item 3 -->
+      <div class="relative mb-20 md:flex items-center justify-between">
+        <div class="md:w-[45%] bg-surface-container p-6 border-b border-error/20 hover:bg-surface-container-high transition-all group">
+          <div class="text-xs font-label text-error mb-2">July 2025 - Sept 2025</div>
+          <h3 class="font-headline text-2xl text-on-surface group-hover:text-error transition-colors">IIT KHARAGPUR</h3>
+          <p class="font-label text-xs text-on-surface-variant mb-4">RESEARCH INTERN</p>
+          <p class="text-sm text-on-surface-variant leading-relaxed mb-4">
+            Achieved <strong>CEGA Zone A+B classification with perfect test coverage</strong> using ResNet34, VGG16, and CNN-LSTM-Attention models for glucose prediction from PPG signals.<br/>
+            Reduced RMSE by 18% through advanced model design, hyperparameter tuning, and optimization techniques.<br/>
+            Improved system robustness by 20% via a novel 1-second PPG segmentation pipeline with systolic/diastolic peak detection and adaptive filtering.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-surface-container-highest text-[10px] font-label text-on-surface-variant">ResNet34</span>
+            <span class="px-2 py-1 bg-surface-container-highest text-[10px] font-label text-on-surface-variant">VGG16</span>
+            <span class="px-2 py-1 bg-surface-container-highest text-[10px] font-label text-on-surface-variant">Signal Processing</span>
+          </div>
+        </div>
+        <div class="hidden md:block absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-surface border-2 border-error z-10 shadow-[0_0_10px_rgba(255,113,108,0.5)]"></div>
+        <div class="md:w-[45%]"></div>
+      </div>
+
+      <!-- Experience Item 4 -->
+      <div class="relative mb-20 md:flex flex-row-reverse items-center justify-between">
+        <div class="md:w-[45%] bg-surface-container p-6 border-b border-primary/20 hover:bg-surface-container-high transition-all group">
+          <div class="text-xs font-label text-primary mb-2">May 2025 - June 2025</div>
+          <h3 class="font-headline text-2xl text-on-surface group-hover:text-primary transition-colors">IIT ROORKEE</h3>
+          <p class="font-label text-xs text-secondary-dim mb-4">SPARK FELLOW</p>
+          <p class="text-sm text-on-surface-variant leading-relaxed mb-4">
+            Worked on detecting <strong>Arctic sea ice concentration anomalies</strong> using data-driven and unsupervised learning approaches on large-scale climate datasets.<br/>
+            Improved anomaly recall by 25% using five unsupervised models and a custom autoencoder pipeline, with a 30% boost in temporal detection via Autoencoder and LSTM Autoencoder architectures.<br/>
+            Drafted and submitted a manuscript to <em>Ocean Modelling</em>, integrating ML-based anomaly detection with CMIP6 and NCUM forecasting frameworks.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-surface-container-highest text-[10px] font-label text-on-surface-variant">Oceanography</span>
+            <span class="px-2 py-1 bg-surface-container-highest text-[10px] font-label text-on-surface-variant">LSTM</span>
+            <span class="px-2 py-1 bg-surface-container-highest text-[10px] font-label text-on-surface-variant">Big Data</span>
+          </div>
+        </div>
+        <div class="hidden md:block absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-surface border-2 border-primary z-10 shadow-[0_0_10px_rgba(161,250,255,0.5)]"></div>
+        <div class="md:w-[45%]"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="py-24 px-6 md:px-24 bg-surface-container-low" id="projects">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+        <div>
+          <h2 class="font-headline text-5xl text-on-surface uppercase tracking-tight">MISSION_DATA</h2>
+          <p class="font-label text-secondary text-sm">SELECTIVE REPOSITORY OF DEPLOYED ASSETS</p>
+        </div>
+        <a class="font-label text-primary text-xs flex items-center gap-2 hover:gap-4 transition-all" href="#">
+          VIEW_ALL_ON_GITHUB <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+
+        <!-- AyurBot -->
+        <div class="md:col-span-8 bg-surface-container-high p-8 flex flex-col justify-between border border-primary/20 relative group overflow-hidden">
+          <div class="absolute -right-10 -top-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-all duration-500"></div>
+          <div>
+            <div class="flex justify-between items-start mb-6">
+              <div class="text-xs font-label text-primary tracking-[0.2em]">SYSTEM: RAG_ARCH_01</div>
+              <span class="material-symbols-outlined text-primary/40 group-hover:text-primary transition-colors">clinical_notes</span>
+            </div>
+            <h3 class="font-headline text-4xl text-primary mb-4 glow-cyan">AyurBot — RAG-Based Ayurvedic Chatbot</h3>
+            <p class="text-on-surface-variant text-sm md:text-base leading-relaxed mb-6 max-w-2xl">
+              An AI-powered knowledge assistant built on a Retrieval-Augmented Generation (RAG) pipeline using the Charaka Samhita. Retrieves and reranks relevant Sanskrit shlokas with English explanations to generate grounded responses. Implements semantic search with embeddings and cross-encoder reranking for high accuracy.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-4 border-t border-white/5">
+            <span class="text-[10px] font-label bg-primary/10 text-primary px-2 py-1 border border-primary/20">Next.js</span>
+            <span class="text-[10px] font-label bg-primary/10 text-primary px-2 py-1 border border-primary/20">ChromaDB</span>
+            <span class="text-[10px] font-label bg-primary/10 text-primary px-2 py-1 border border-primary/20">Sentence Transformers</span>
+            <span class="text-[10px] font-label bg-primary/10 text-primary px-2 py-1 border border-primary/20">Gemini API</span>
+            <span class="text-[10px] font-label bg-primary/10 text-primary px-2 py-1 border border-primary/20">Flask</span>
+          </div>
+        </div>
+
+        <!-- Flow State -->
+        <div class="md:col-span-4 bg-surface-container p-8 flex flex-col justify-between border border-secondary/10 relative group">
+          <div class="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity">
+            <span class="material-symbols-outlined text-secondary">bolt</span>
+          </div>
+          <div>
+            <div class="text-xs font-label text-secondary-dim mb-4 tracking-widest">MONITORING_SYSTEM</div>
+            <h3 class="font-headline text-2xl text-on-surface mb-4 group-hover:text-secondary transition-colors">Flow State</h3>
+            <p class="text-sm text-on-surface-variant leading-relaxed">
+              Full-stack application tracking productivity via real-time attention monitoring. Includes intervention tools like Pomodoro and Spotify API focus music integration.
+            </p>
+          </div>
+          <div class="mt-8 flex flex-wrap gap-2">
+            <span class="text-[10px] font-label text-secondary/60 bg-secondary/5 px-2 py-1 border border-secondary/10">#TypeScript</span>
+            <span class="text-[10px] font-label text-secondary/60 bg-secondary/5 px-2 py-1 border border-secondary/10">#MongoDB</span>
+            <span class="text-[10px] font-label text-secondary/60 bg-secondary/5 px-2 py-1 border border-secondary/10">#Groq_API</span>
+            <span class="text-[10px] font-label text-secondary/60 bg-secondary/5 px-2 py-1 border border-secondary/10">#AWS_S3</span>
+          </div>
+        </div>
+
+        <!-- Galleria AI -->
+        <div class="md:col-span-4 bg-surface-container p-8 flex flex-col justify-between border border-primary/10 relative group">
+          <div class="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity">
+            <span class="material-symbols-outlined text-primary">filter_vintage</span>
+          </div>
+          <div>
+            <div class="text-xs font-label text-primary-dim mb-4 tracking-widest">MULTIMODAL_SEARCH</div>
+            <h3 class="font-headline text-2xl text-on-surface mb-4 group-hover:text-primary transition-colors">Galleria AI</h3>
+            <p class="text-sm text-on-surface-variant leading-relaxed">
+              Multimodal gallery system enabling natural language and face-based search. Uses facial embeddings and smart intent detection for personal vs general queries.
+            </p>
+          </div>
+          <div class="mt-8 flex flex-wrap gap-2">
+            <span class="text-[10px] font-label text-primary/60 bg-primary/5 px-2 py-1 border border-primary/10">#React_Native</span>
+            <span class="text-[10px] font-label text-primary/60 bg-primary/5 px-2 py-1 border border-primary/10">#DeepFace</span>
+            <span class="text-[10px] font-label text-primary/60 bg-primary/5 px-2 py-1 border border-primary/10">#Node.js</span>
+            <span class="text-[10px] font-label text-primary/60 bg-primary/5 px-2 py-1 border border-primary/10">#Cloudinary</span>
+          </div>
+        </div>
+
+        <!-- LUMEN -->
+        <div class="md:col-span-8 bg-surface-container-high p-8 flex flex-col md:flex-row gap-8 border border-secondary/20 hover:bg-surface-container transition-all group relative overflow-hidden">
+          <div class="absolute inset-0 bg-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="md:w-1/3 bg-surface-dim flex items-center justify-center border border-secondary/20 p-6 relative">
+            <span class="material-symbols-outlined text-7xl text-secondary opacity-30 group-hover:scale-110 transition-transform duration-500">account_balance_wallet</span>
+          </div>
+          <div class="md:w-2/3 relative">
+            <div class="text-xs font-label text-secondary mb-2">FINANCIAL_INTELLIGENCE // LUMEN_v4</div>
+            <h3 class="font-headline text-3xl text-on-surface mb-4 tracking-tight uppercase group-hover:text-secondary transition-colors">LUMEN — AI Financial Intelligence Platform</h3>
+            <p class="text-on-surface-variant text-sm mb-6 leading-relaxed">
+              Comprehensive platform for AI-driven financial analysis. Offers multimodal interaction with a context-aware advisor, portfolio optimization, risk analysis, and real-time health tracking via Yahoo Finance APIs.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <div class="px-3 py-1 bg-surface-container-highest border-l-2 border-secondary">
+                <div class="text-[10px] font-label text-on-surface/60">BACKEND</div>
+                <div class="text-xs font-bold text-on-surface">FastAPI + Go</div>
+              </div>
+              <div class="px-3 py-1 bg-surface-container-highest border-l-2 border-primary">
+                <div class="text-[10px] font-label text-on-surface/60">INTELLIGENCE</div>
+                <div class="text-xs font-bold text-on-surface">Groq API</div>
+              </div>
+              <div class="px-3 py-1 bg-surface-container-highest border-l-2 border-on-surface/20">
+                <div class="text-[10px] font-label text-on-surface/60">STACK</div>
+                <div class="text-xs font-bold text-on-surface">Next.js + MongoDB</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Section -->
+  <section class="py-24 px-6 md:px-24 bg-surface border-y border-[#a1faff]/5 relative" id="research">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="font-headline text-5xl text-on-surface mb-16 text-center uppercase tracking-[0.2em]">PUBLICATIONS &amp; IP</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+        <!-- Paper 1 -->
+        <div class="flex gap-6 group">
+          <div class="font-headline text-6xl text-outline-variant/20 group-hover:text-primary/20 transition-colors">01</div>
+          <div>
+            <div class="font-label text-secondary text-xs mb-2">JOURNAL / OCEMOD-D-25-00187</div>
+            <h4 class="font-headline text-2xl text-on-surface mb-4 leading-none">Decoding Arctic Sea Ice Anomalies with Data-Driven Machine Learning Models</h4>
+            <p class="text-on-surface-variant text-sm mb-4">First Author. Status: [UNDER REVIEW].</p>
+            <a class="text-primary font-label text-xs border-b border-primary/20 pb-1 hover:border-primary transition-all inline-block" href="https://www.sciencedirect.com/journal/ocean-modelling" target="_blank" rel="noopener noreferrer">JOURNAL_REFERENCE</a>
+          </div>
+        </div>
+
+        <!-- Paper 2 -->
+        <div class="flex gap-6 group">
+          <div class="font-headline text-6xl text-outline-variant/20 group-hover:text-secondary/20 transition-colors">02</div>
+          <div>
+            <div class="font-label text-secondary text-xs mb-2">CONFERENCE / LION20-75</div>
+            <h4 class="font-headline text-2xl text-on-surface mb-4 leading-none">Physics-Guided Optimization for Learning under Physiological Constraints: A Case Study on Hemoglobin Estimation</h4>
+            <p class="text-on-surface-variant text-sm mb-4">First Author, Published in LION20 conference proceedings.</p>
+            <a class="text-primary font-label text-xs border-b border-primary/20 pb-1 hover:border-primary transition-all inline-block" href="https://lion20.org/" target="_blank" rel="noopener noreferrer">CONFERENCE_LINK</a>
+          </div>
+        </div>
+
+        <!-- Paper 3 -->
+        <div class="flex gap-6 group">
+          <div class="font-headline text-6xl text-outline-variant/20 group-hover:text-primary/20 transition-colors">03</div>
+          <div>
+            <div class="font-label text-secondary text-xs mb-2">CONFERENCE / LION20-77</div>
+            <h4 class="font-headline text-2xl text-on-surface mb-4 leading-none">Budgeted Multi-Objective Feature Engineering via LLM-Guided Program Search</h4>
+            <p class="text-on-surface-variant text-sm mb-4">Contributing Author. Research on automated feature engineering pipelines.</p>
+            <a class="text-primary font-label text-xs border-b border-primary/20 pb-1 hover:border-primary transition-all inline-block" href="https://lion20.org/" target="_blank" rel="noopener noreferrer">CONFERENCE_LINK</a>
+          </div>
+        </div>
+
+        <!-- Patent -->
+        <div class="md:col-span-2 bg-[#2ff801]/5 p-8 border border-[#2ff801]/20 flex flex-col md:flex-row items-center gap-8">
+          <div class="p-6 bg-secondary text-on-secondary">
+            <span class="material-symbols-outlined text-4xl" style='font-variation-settings: "FILL" 1;'>gavel</span>
+          </div>
+          <div class="flex-grow">
+            <div class="inline-block px-2 py-1 bg-secondary text-on-secondary font-label text-[10px] mb-4">OFFICIALLY FILED: IP_PENDING</div>
+            <h3 class="font-headline text-3xl text-on-surface mb-2 tracking-tight">Fuzzy Logic-Enhanced Probabilistic Tracking Framework with Feedback Integration for Underwater Wireless Sensor Networks (UWSNs)</h3>
+            <p class="text-on-surface-variant text-sm max-w-3xl">A novel framework for optimized tracking and communication in underwater environments using fuzzy logic and probabilistic modeling.</p>
+          </div>
+          <div class="text-right">
+            <div class="text-3xl font-headline text-secondary">STATUS: [PENDING]</div>
+            <div class="font-label text-[10px] text-on-surface/40">USPTO / INDIAN PATENT OFFICE</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="py-24 px-6 md:px-24 bg-surface-container-low" id="skills">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="font-headline text-4xl text-on-surface mb-12 text-center uppercase tracking-widest">TECHNICAL_STACK</h2>
+      <div class="space-y-12">
+        <div>
+          <h3 class="font-label text-xs text-primary mb-4 tracking-tighter">LANGUAGES &amp; CORE</h3>
+          <div class="flex flex-wrap gap-3">
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-primary hover:glow-cyan transition-all">C/C++</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-primary hover:glow-cyan transition-all">Python</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-primary hover:glow-cyan transition-all">JavaScript</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-primary hover:glow-cyan transition-all">SQL</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-label text-xs text-secondary mb-4 tracking-tighter">FRAMEWORK &amp; LIBRARIES</h3>
+          <div class="flex flex-wrap gap-3">
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-secondary hover:glow-green transition-all">Flask</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-secondary hover:glow-green transition-all">FastAPI</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-secondary hover:glow-green transition-all">Node.js</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-secondary hover:glow-green transition-all">ExpressJS</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-secondary hover:glow-green transition-all">Scikit-Learn</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-secondary hover:glow-green transition-all">PyTorch</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-secondary hover:glow-green transition-all">SciPy</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-secondary hover:glow-green transition-all">Matplotlib</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-secondary hover:glow-green transition-all">Tensorflow</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-secondary hover:glow-green transition-all">Mediapipe</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-label text-xs text-primary mb-4 tracking-tighter">TECHNOLOGIES &amp; TOOLS</h3>
+          <div class="flex flex-wrap gap-3">
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-primary hover:glow-cyan transition-all">Git</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-primary hover:glow-cyan transition-all">Linux</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-primary hover:glow-cyan transition-all">AWS (Basic)</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-primary hover:glow-cyan transition-all">VS Code</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-primary hover:glow-cyan transition-all">PyCharm</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-primary hover:glow-cyan transition-all">Hugging Face</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-primary hover:glow-cyan transition-all">Transformers</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-primary hover:glow-cyan transition-all">Autoencoders</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-primary hover:glow-cyan transition-all">Kaggle</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-primary hover:glow-cyan transition-all">Stitch</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-primary hover:glow-cyan transition-all">Claude</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-primary hover:glow-cyan transition-all">Antigravity</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-label text-xs text-secondary mb-4 tracking-tighter">DATABASES</h3>
+          <div class="flex flex-wrap gap-3">
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-secondary hover:glow-green transition-all">MySQL</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-secondary hover:glow-green transition-all">PostgreSQL</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-secondary hover:glow-green transition-all">Google Firebase</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-secondary hover:glow-green transition-all">Supabase</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-secondary hover:glow-green transition-all">FAISS</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-secondary hover:glow-green transition-all">Qdrant</span>
+            <span class="bg-surface-container-highest px-4 py-2 text-sm font-label border-l-2 border-secondary hover:glow-green transition-all">Pinecone</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-32 px-6 md:px-24 bg-surface text-center" id="contact">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="font-headline text-6xl text-primary mb-6 glow-cyan">GET IN TOUCH</h2>
+      <p class="text-xl text-on-surface-variant mb-12 font-label italic">"Let's build something that matters."</p>
+      <div class="flex flex-col md:flex-row justify-center items-center gap-10">
+        <a class="group flex flex-col items-center gap-3" href="mailto:shashank23102@iiitnr.edu.in">
+          <div class="w-16 h-16 border border-primary/30 flex items-center justify-center group-hover:bg-primary/10 transition-all">
+            <span class="material-symbols-outlined text-primary">mail</span>
+          </div>
+          <span class="font-label text-xs tracking-widest text-on-surface/60">EMAIL</span>
+        </a>
+        <a class="group flex flex-col items-center gap-3" href="https://www.linkedin.com/in/mishra-shashank5787/" target="_blank" rel="noopener noreferrer">
+          <div class="w-16 h-16 border border-secondary/30 flex items-center justify-center group-hover:bg-secondary/10 transition-all">
+            <span class="material-symbols-outlined text-secondary">share</span>
+          </div>
+          <span class="font-label text-xs tracking-widest text-on-surface/60">LINKEDIN</span>
+        </a>
+        <a class="group flex flex-col items-center gap-3" href="https://github.com/code-shm" target="_blank" rel="noopener noreferrer">
+          <div class="w-16 h-16 border border-primary/30 flex items-center justify-center group-hover:bg-primary/10 transition-all">
+            <span class="material-symbols-outlined text-primary">terminal</span>
+          </div>
+          <span class="font-label text-xs tracking-widest text-on-surface/60">GITHUB</span>
+        </a>
+      </div>
+      <div class="mt-20 pt-20 border-t border-outline-variant/10 text-on-surface/20 font-label text-[10px] tracking-tighter">
+        [ COORDINATES: 22.5726° N, 88.3639° E // KRAKEN_LINK_ACTIVE ]
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="w-full py-8 px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-4 bg-[#0e0e13] border-t border-[#a1faff]/5">
+    <div class="font-['JetBrains_Mono'] text-[10px] tracking-tighter uppercase text-[#fcf8ff]/40">
+      © 2025 SHASHANK MISHRA // NEURAL SIGNAL PERSISTENCE
+    </div>
+    <div class="flex items-center gap-6 font-['JetBrains_Mono'] text-[10px] tracking-tighter uppercase">
+      <a class="text-[#fcf8ff]/40 hover:text-[#2ff801] transition-all duration-300" href="https://github.com/code-shm" target="_blank" rel="noopener noreferrer">GITHUB</a>
+      <a class="text-[#fcf8ff]/40 hover:text-[#2ff801] transition-all duration-300" href="https://www.linkedin.com/in/mishra-shashank5787/" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+      <a class="text-[#fcf8ff]/40 hover:text-[#2ff801] transition-all duration-300" href="#">HUGGING FACE</a>
+      <a class="text-[#fcf8ff]/40 hover:text-[#2ff801] transition-all duration-300" href="#">ARXIV</a>
+    </div>
+  </footer>
+
+</body>
+</html>
